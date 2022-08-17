@@ -53,7 +53,7 @@
                             <x-adminlte-button onclick="Enviar('Adelante','M1')" theme="dark" icon="fas fa-arrow-alt-circle-up"/>
                             <x-adminlte-button onclick="Enviar('Izq','M1')" theme="dark" icon="fas fa-arrow-alt-circle-left"/>
                             <x-adminlte-button onclick="Enviar('Der','M1')" theme="dark" icon="fas fa-arrow-alt-circle-right"/>
-                            <x-adminlte-button onclick="Enviar('Retroceder','M1')" theme="dark" icon="fas fa-arrow-alt-circle-down"/>
+                            <x-adminlte-button onclick="Enviar('Atras','M1')" theme="dark" icon="fas fa-arrow-alt-circle-down"/>
                             <x-adminlte-button onclick="Enviar('Stop','M1')" theme="dark" icon="fas fa-stop-circle"/><br/><br/>
 
                             <button type="button" class="btn btn-dark" onclick="Enviar('Ad_Der','M1')" >Adel Der</button>
@@ -77,17 +77,18 @@
                     <x-adminlte-button onclick="Enviar('S1_der','M1')" theme="dark" icon="fas fa-arrow-alt-circle-right"/>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Camara 2</h5>
+                    <h5 id="servoPos" class="card-title">Posición Cámara 2:</h5>
                     <div class="embed-responsive embed-responsive-21by9">
                         <video id="video" class="embed-responsive-item"></video>
                     </div>
-                    <x-adminlte-button onclick="Enviar('S2_izq','M1')" theme="dark" icon="fas fa-arrow-alt-circle-left"/>
-                    <x-adminlte-button onclick="Enviar('S2_der','M1')" theme="dark" icon="fas fa-arrow-alt-circle-right"/>
-                    <h1>ESP32 with Servo</h1>
+                    <!--x-adminlte-button onclick="Enviar('S2_izq','M1')" theme="dark" icon="fas fa-arrow-alt-circle-left"/>
+                    <x-adminlte-button onclick="Enviar('S2_der','M1')" theme="dark" icon="fas fa-arrow-alt-circle-right"/-->
+                    
+                    <input type="range" min="0" max="180" class="slider" id="slider" onchange="Enviar(value, 'M1')"/>
+                    <!--h1>Servo</h1>
                     <p>Position: <span id="servoPos"></span></p>
                     <input type="range" min="0" max="180" class="slider" id="slider" 
-                         onchange="Enviar(value, 'M1')"
-                    />
+                         onchange="Enviar(value, 'M1')"/-->
 
                 </div>
             </div>
@@ -225,9 +226,9 @@
                     function startConnect() {
                         clientID = "ID-" + parseInt(Math.random() * 100);
                         var slider = document.getElementById("slider").value;
-                        var servoP = document.getElementById("servoPos").value;
-                        //slider.addEventListener('click', slider_changed);
-                        //console.log(slider)
+                        // var servoP = document.getElementById("servoPos").value;
+                        // document.getElementById("servoPos").value = slider.value;
+                        // console.log(slider)
                         host = document.getElementById("host").value;
                         port = document.getElementById("port").value;
                         document.getElementById("text_area").value += 'Conectando a: ' + host + '\nEn el puerto: ' + port + '\n';

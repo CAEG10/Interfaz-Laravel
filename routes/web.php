@@ -19,6 +19,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+/*Se necesita autentificaion para acceder a las diferentes vistas*/
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
