@@ -201,7 +201,7 @@
 
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
-    <script src="{{asset('js/mqttws31.min.js')}}"></script> 
+    <script src="/vendor/adminlte/dist/js/mqttws31.min.js"></script> 
     <script src="{{asset('js/paho.mqtt.min.js')}}"></script> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -242,7 +242,7 @@
                     }
                     function onConnect() {
                         topic = document.getElementById("topic").value;
-                        document.getElementById("text_area").value += 'Suscribendo a topic: ' + topic +'\nConectado a Robok v1.1\n';
+                        document.getElementById("text_area").value += 'Suscribiendo a topic: ' + topic +'\nConectado a Robok v1.1\n';
                         client.subscribe(topic);
                         
                         message = new Paho.MQTT.Message("Conexion Ok");

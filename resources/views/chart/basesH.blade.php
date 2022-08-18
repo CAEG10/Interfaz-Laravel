@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'GráficosH')
+@section('title', 'Gráfico-Humedad')
 
 @section('content_header')
     <h1>Base de datos con Chartjs</h1>
@@ -39,7 +39,7 @@
      -->
 
 
-<!-- Capturamos la variable de humedad '$dataT', en forta json -->
+<!-- Capturamos la variable de humedad '$dataT', en formato json -->
 <script>
     $(document).ready(function() {
             const cData = JSON.parse(`<?php echo $dataH1; ?>`)
