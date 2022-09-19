@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\SensorController;
+use App\Http\Controllers\AnalogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,12 +29,15 @@ Route::middleware([
         Route::get('/home', function () { return view('dash.welcome'); })->name('home');
         Route::get('/dash', function () { return view('dash.index'); })->name('dash');
         Route::get('/control', function () { return view('control.index');})->name('control');
-        Route::get('/chart/index', function () { return view('chart.index'); })->name('chart/index');
+        Route::get('/chart', function () { return view('chart.index'); })->name('chart/index');
+        Route::get('/chart/A0', [AnalogController::class, 'basesA'])->name('chart/A0');
         Route::get('/chart', [ChartController::class, 'basesT'])->name('chart');
         Route::get('/chart/hum', [SensorController::class, 'basesH'])->name('chart/hum');
         Route::get('/profile', function () { return view('profile.show'); })->name('profile');
         Route::get('dashboard', function () { return view('dashboard'); })->name('dashboard');
 });
+
+Route::get('/boton', function () { return view('dash.boton'); })->name('boton');
 
 /* Route::middleware([
     'auth:sanctum',

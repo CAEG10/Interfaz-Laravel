@@ -34,7 +34,7 @@
                         <div class="row">
                             <div class="col">
                                 <label for="form-control">Topic</label>
-                                <input id="topic" type="text" class="form-control" value="M1" placeholder="M1">
+                                <input id="topic" type="text" class="form-control" value="Rb-Crop" placeholder="M1">
                             </div>
                             <div class="col">
                                 <label for="form-control">N° Cliente</label>
@@ -50,16 +50,19 @@
                             <input type="button" onclick="Clear()" value="Limpiar" class="btn btn-warning"> -->
                             <br/>
                             <br/>
-                            <x-adminlte-button onclick="Enviar('Adelante','M1')" theme="dark" icon="fas fa-arrow-alt-circle-up"/>
-                            <x-adminlte-button onclick="Enviar('Izq','M1')" theme="dark" icon="fas fa-arrow-alt-circle-left"/>
-                            <x-adminlte-button onclick="Enviar('Der','M1')" theme="dark" icon="fas fa-arrow-alt-circle-right"/>
-                            <x-adminlte-button onclick="Enviar('Atras','M1')" theme="dark" icon="fas fa-arrow-alt-circle-down"/>
-                            <x-adminlte-button onclick="Enviar('Stop','M1')" theme="dark" icon="fas fa-stop-circle"/><br/><br/>
+                            <button type="button" class="btn btn-dark" onclick="Enviar('Test','Rb-Crop')" >Test</button>
+                            <br/>
+                            <br/>
+                            <x-adminlte-button onclick="Enviar('Adelante','Rb-Crop')" theme="dark" icon="fas fa-arrow-alt-circle-up"/>
+                            <x-adminlte-button onclick="Enviar('Izq','Rb-Crop')" theme="dark" icon="fas fa-arrow-alt-circle-left"/>
+                            <x-adminlte-button onclick="Enviar('Der','Rb-Crop')" theme="dark" icon="fas fa-arrow-alt-circle-right"/>
+                            <x-adminlte-button onclick="Enviar('Atras','Rb-Crop')" theme="dark" icon="fas fa-arrow-alt-circle-down"/>
+                            <x-adminlte-button onclick="Enviar('Stop','Rb-Crop')" theme="dark" icon="fas fa-stop-circle"/><br/><br/>
 
-                            <button type="button" class="btn btn-dark" onclick="Enviar('Ad_Der','M1')" >Adel Der</button>
-                            <button type="button" class="btn btn-dark" onclick="Enviar('Ad_Izq','M1')" >Adel Izq</button>
-                            <button type="button" class="btn btn-dark" onclick="Enviar('Re_Der','M1')" >Retr Der</button>
-                            <button type="button" class="btn btn-dark" onclick="Enviar('Re_Izq','M1')" >Retr Izq</button>
+                            <button type="button" class="btn btn-dark" onclick="Enviar('Ad_Der','Rb-Crop')" >Adel Der</button>
+                            <button type="button" class="btn btn-dark" onclick="Enviar('Ad_Izq','Rb-Crop')" >Adel Izq</button>
+                            <button type="button" class="btn btn-dark" onclick="Enviar('Re_Der','Rb-Crop')" >Retr Der</button>
+                            <button type="button" class="btn btn-dark" onclick="Enviar('Re_Izq','Rb-Crop')" >Retr Izq</button>
                     </form> 
                     <br/>
                     <x-adminlte-textarea id="text_area" name="taBasic" rows="8" cols="4" placeholder="Esperando conexión..." />
@@ -73,8 +76,9 @@
                     <div class="embed-responsive embed-responsive-21by9" border-style= "dashed">
                         <video id="video" class="embed-responsive-item"></video>
                     </div>
-                    <x-adminlte-button onclick="Enviar('S1_izq','M1')" theme="dark" icon="fas fa-arrow-alt-circle-left"/>
-                    <x-adminlte-button onclick="Enviar('S1_der','M1')" theme="dark" icon="fas fa-arrow-alt-circle-right"/>
+                    <x-adminlte-button onclick="Enviar('S1_Izq','Rb-Crop')" theme="dark" icon="fas fa-arrow-alt-circle-left"/>
+                    <x-adminlte-button onclick="Enviar('S1_Cen','Rb-Crop')" theme="dark" icon="fas fa-arrow-alt-circle-right"/>
+                    <x-adminlte-button onclick="Enviar('S1_Der','Rb-Crop')" theme="dark" icon="fas fa-arrow-alt-circle-right"/>
                 </div>
                 <div class="card-body">
                     <h5 id="servoPos" class="card-title">Posición Cámara 2:</h5>
@@ -201,8 +205,9 @@
 
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
-    <script src="/vendor/adminlte/dist/js/mqttws31.min.js"></script> 
+    <!-- <script src="/vendor/adminlte/dist/js/mqttws31.min.js"></script>  -->
     <script src="{{asset('js/paho.mqtt.min.js')}}"></script> 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.2/mqttws31.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- <script>
@@ -242,11 +247,11 @@
                     }
                     function onConnect() {
                         topic = document.getElementById("topic").value;
-                        document.getElementById("text_area").value += 'Suscribiendo a topic: ' + topic +'\nConectado a Robok v1.1\n';
+                        document.getElementById("text_area").value += 'Suscribiendo a topic: ' + topic +'\nConectado a Crop-IAR v2.0\n';
                         client.subscribe(topic);
                         
                         message = new Paho.MQTT.Message("Conexion Ok");
-                        message.destinationName = "M1";
+                        message.destinationName = "Rb-Crop";
                         //client.send(message);
                     }
                     function onConnectionLost(responseObject) {

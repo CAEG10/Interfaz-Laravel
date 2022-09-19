@@ -16,7 +16,7 @@ return [
 
     'title' => '',
     'title_prefix' => ' ',
-    'title_postfix' => ' | RB-CNN',
+    'title_postfix' => ' | C-IAR',
 
     /*
     |--------------------------------------------------------------------------
@@ -45,8 +45,8 @@ return [
     |
     */
 
-    'logo' => '<b>ROBOK</b> CNN',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b>CROP</b>-IAR',
+    'logo_img' => 'vendor/adminlte/dist/img/logo_0_1.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -280,7 +280,7 @@ return [
                     'submenu' => [
                         [
                             'text' => 'CO2',
-                            'url'  => '/chart/index',
+                            'url'  => '/chart/A0',
                             'icon'  => 'fas fa-smog'
                         ],
                         [

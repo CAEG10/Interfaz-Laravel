@@ -13,6 +13,7 @@
         <iframe class="card" src="http://127.0.0.1:1880/ui/#!/2?socketid=pOfc9IbKPg4EaVfvAAAT" height="280" width="95%"></iframe>
         <iframe class="card" src="http://127.0.0.1:1880/ui/#!/1?socketid=pOfc9IbKPg4EaVfvAAAT" height="570" width="80%"></iframe>
     </div>
+    <br/><br/>
 @stop
 
 @section('css')
